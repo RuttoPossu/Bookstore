@@ -2,6 +2,7 @@ package hh.backend.bookstore.bookstore.web;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,6 +43,24 @@ public class BookController {
         bookRepository.save(book);
         return "redirect:/booklist";
     }
+
+    @GetMapping("/edit/{id}")
+    public String showEditBookForm(@PathVariable Long id, Model model) {
+        Optional<Book> book = bookRepository.findById(id);
+        if (book.isPresent()) {
+            model.addAttribute("book", book.get());
+            return "editbook";
+        } else {
+            return "redirect:/booklist";
+        }
+    }
+
+    @PostMapping("/edit")
+    public String editBook(@ModelAttribute Book book) {
+        bookRepository.save(book);
+        return "redirect:/booklist";
+    }
+    
     
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable Long id) {

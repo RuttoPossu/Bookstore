@@ -3,10 +3,11 @@
 <head>
     <title>All Books</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
     <h1>All Books</h1>
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Title</th>
@@ -24,11 +25,12 @@
                 <td th:text="${book.isbn}">ISBN</td> 
                 <td th:text="${book.price}">Price</td> 
                 <td>
-                    <a th:href="@{/books/delete/{id}(id=${book.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+                    <a th:href="@{/edit/{id}(id=${book.id})}">Edit</a> 
+                    <a th:href="@{/delete/{id}(id=${book.id})}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         </tbody>
     </table>
-    <a href="/addbook">Add Book</a>
+    <a href="/addbook" class="btn btn-success">Add Book</a>
 </body>
 </html>
