@@ -22,10 +22,10 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
-    @RequestMapping(value = "/allbooks", method = RequestMethod.GET)
+    @RequestMapping(value = "/booklist", method = RequestMethod.GET)
     public String getBooks(Model model) {
         model.addAttribute("books", bookRepository.findAll());
-        return "allbooks"; 
+        return "booklist"; 
     }
 
     @GetMapping("/index")
