@@ -23,8 +23,12 @@
                 <td th:text="${book.pYear}">Publication Year</td> 
                 <td th:text="${book.isbn}">ISBN</td> 
                 <td th:text="${book.price}">Price</td> 
+                <td>
+                    <a th:href="@{/books/delete/{id}(id=${book.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
             </tr>
         </tbody>
     </table>
+    <a href="/addbook">Add Book</a>
 </body>
 </html>
